@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Signal</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: white;
+        }
+
+        .traffic-light {
+            width: 120px;
+            background: black;
+            padding: 15px;
+            border-radius: 20px;
+        }
+
+        .light {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 15px auto;
+            opacity: 0.2;
+        }
+
+        #red {
+            background: red;
+        }
+
+        #yellow {
+            background: yellow;
+        }
+
+        #green {
+            background: green;
+        }
+
+        .on {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="traffic-light">
+        <div id="red" class="light"></div>
+        <div id="yellow" class="light"></div>
+        <div id="green" class="light"></div>
+    </div>
+
+    <script>
+        let lights = [
+            document.getElementById("red"),
+            document.getElementById("yellow"),
+            document.getElementById("green")
+        ];
+
+        let i = 0;
+
+        function changeLight() {
+
+            // Turn OFF all lights
+            lights.forEach(function(light) {
+                light.classList.remove("on");
+            });
+
+            // Turn ON current light
+            lights[i].classList.add("on");
+
+            // Move to next light
+            i++;
+
+            if (i == lights.length) {
+                i = 0;
+            }
+        }
+
+        // First light ON
+        changeLight();
+
+        // Change every 10 seconds
+        setInterval(changeLight, 2000);
+    </script>
+
+</body>
+</html>
+
